@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from "@angular/http";
-import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
+import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,9 +13,9 @@ import { Signup } from './../pages/signup/signup';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-
 import { AuthService } from './../providers/auth.service';
 import { UserService } from './../providers/user.service';
+import { UtilsService } from './../providers/utils.service';
 
 
 const firebaseAppConfig: FirebaseAppConfig = {
@@ -24,6 +24,11 @@ const firebaseAppConfig: FirebaseAppConfig = {
   databaseURL: "https://petiscool-b2b4a.firebaseio.com",
   storageBucket: "petiscool-b2b4a.appspot.com"
 };
+
+const firebaseAuthConfig = {
+  provider: AuthProviders.Custom,
+  method: AuthMethods.Password
+}
 
 @NgModule({
   declarations: [
@@ -36,7 +41,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseAppConfig),
+    AngularFireModule.initializeApp(firebaseAppConfig, firebaseAuthConfig),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -52,6 +57,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SplashScreen,
     UserService,
     AuthService,
+    UtilsService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

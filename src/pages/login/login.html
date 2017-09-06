@@ -8,6 +8,22 @@
 
 
 <ion-content padding>
-  <button ion-button block (click)="onSignUp()">Inscreva-se</button>
-  <button ion-button block (click)="onLogIn()">Entrar</button>
+  <h1 text-center>
+    <ion-icon class="auth-icon" name="md-paw" color="primary"></ion-icon>
+  </h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+    <ion-item>
+      <ion-icon name="mail" item-left color="primary"></ion-icon>
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock" item-left color="primary"></ion-icon>
+      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <br>
+    <button ion-button full type="submit" [disabled]="loginForm.invalid">Entrar</button>
+    <button ion-button full clear textx-center (click)="onSignUp()">Inscreva-se</button>
+  </form>
 </ion-content>

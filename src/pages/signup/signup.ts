@@ -1,9 +1,10 @@
+import { Login } from './../login/login';
+import { Component } from '@angular/core';
 import { FirebaseAuthState } from 'angularfire2';
 import { AuthService } from './../../providers/auth.service';
-import { Component } from '@angular/core';
+import { UserService } from './../../providers/user.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Loading, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
-import { UserService } from './../../providers/user.service';
 
 
 @Component({
@@ -22,13 +23,13 @@ export class Signup {
     public authService: AuthService,
     public alertCtrl: AlertController) {
 
-    //let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
+    let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
 
     this.signupForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       username: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required]],
-      //email: ['', Validators.compose([Validators.required, Validators.pattern(emailRegex)])],
+      //email: ['', [Validators.required]],
+      email: ['', Validators.compose([Validators.required, Validators.pattern(emailRegex)])],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
@@ -39,40 +40,50 @@ export class Signup {
 
   onSubmit(): void {
     let loading: Loading = this.showLoading();
-
     let formUser = this.signupForm.value;
+    let username: string = formUser.username;
 
-    this.authService.createAuthUser({
-      email: formUser.email,
-      password: formUser.password
-    }).then((authState: FirebaseAuthState) => {
-
-      delete formUser.password;
-      formUser.uid = authState.auth.uid;
-
-      this.userService.create(formUser)
-        .then(() => {
-          console.log("Usuário cadastrado com sucesso!");
+    //Verifica se já existe usuário com aquele username na base.
+    this.userService.userExists(username).first()
+    .subscribe((userExists: boolean) => {
+        if(!userExists)
+        {
+          this.authService.createAuthUser({
+            email: formUser.email,
+            password: formUser.password
+          }).then((authState: FirebaseAuthState) => {
+      
+            delete formUser.password;
+            formUser.uid = authState.auth.uid;
+      
+            this.userService.create(formUser)
+              .then(() => {
+                console.log("Usuário cadastrado com sucesso!");
+                this.navCtrl.setRoot(Login);
+                loading.dismiss();
+              }).catch((error: any) => {
+                console.log(error);
+                loading.dismiss();
+                this.showAlert(error);
+              });
+      
+          }).catch((error: any) => {
+            console.log(error);
+            loading.dismiss();
+            this.showAlert(error);
+          });
+        }
+        else
+        {
+          this.showAlert(`O username ${username} já está sendo usado em outra conta!`);
           loading.dismiss();
-        }).catch((error: Error) => {
-          console.log(error);
-          loading.dismiss();
-          this.showAlert(error.message);
-        });
-
-    }).catch((error: Error) => {
-      console.log(error);
-      loading.dismiss();
-      this.showAlert(error.message);
+        }
     });
-
-
-
   }
 
   private showLoading(): Loading {
     let loading: Loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Aguarde...'
     });
 
     loading.present();
