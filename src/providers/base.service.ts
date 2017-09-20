@@ -1,5 +1,6 @@
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
+import * as firebase from 'firebase';
 
 const extractError = (error: Response | any): string => {
     // In a real world app, we might use a remote logging infrastructure
@@ -24,6 +25,13 @@ export abstract class BaseService {
 
     protected handleObservableError(error: Response | any): Observable<any> {
         return Observable.throw(extractError(error));
+    }
+
+    protected generateKey(): string {
+        let myref = firebase.database().ref().push();
+        let key = myref.key;
+
+        return key;
     }
 
 }

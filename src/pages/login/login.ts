@@ -45,7 +45,7 @@ export class Login {
       .then((isLogged: boolean) => {
         if (isLogged) {
           //Navegacao sem empilhamento
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot(HomePage)
           loading.dismiss();
         }
       }).catch((error: any) => {

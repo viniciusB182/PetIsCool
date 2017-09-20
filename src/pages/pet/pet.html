@@ -1,0 +1,17 @@
+<ion-header>
+  <custom-logged-header [title]="title"></custom-logged-header>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="petForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+    <ion-item>
+      <ion-icon name="person" item-left color="primary"></ion-icon>
+      <ion-input type="text" placeholder="Nome" formControlName="name"></ion-input>
+    </ion-item>
+
+    <br>
+    <button ion-button full type="submit" [disabled]="petForm.invalid">Salvar Pet</button>
+
+  </form>
+</ion-content>

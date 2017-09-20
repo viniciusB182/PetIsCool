@@ -3,20 +3,24 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from "@angular/http";
 import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from 'angularfire2';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Login } from './../pages/login/login';
 import { Signup } from './../pages/signup/signup';
+import { PetPage } from './../pages/pet/pet';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header.component';
 
 import { AuthService } from './../providers/auth.service';
 import { UserService } from './../providers/user.service';
 import { UtilsService } from './../providers/utils.service';
+import { PetService } from './../providers/pet.service';
 
+import { PageTitle } from './../pipes/page-title';
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyBrY7LxhRdEU_1NU_h-zq4MgtrPX6apB34",
@@ -32,11 +36,14 @@ const firebaseAuthConfig = {
 
 @NgModule({
   declarations: [
+    CustomLoggedHeaderComponent,
     MyApp,
     HomePage,
     ListPage,
     Login,
-    Signup
+    Signup,
+    PetPage,
+    PageTitle
   ],
   imports: [
     BrowserModule,
@@ -50,6 +57,7 @@ const firebaseAuthConfig = {
     HomePage,
     ListPage,
     Login,
+    PetPage,
     Signup
   ],
   providers: [
@@ -58,6 +66,8 @@ const firebaseAuthConfig = {
     UserService,
     AuthService,
     UtilsService,
+    PetService,
+    PageTitle,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
