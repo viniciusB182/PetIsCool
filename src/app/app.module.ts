@@ -12,6 +12,7 @@ import { ListPage } from '../pages/list/list';
 import { Login } from './../pages/login/login';
 import { Signup } from './../pages/signup/signup';
 import { PetPage } from './../pages/pet/pet';
+import { CreatePetPage } from './../pages/pet/create-pet/create-pet';
 
 import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header.component';
 
@@ -43,7 +44,8 @@ const firebaseAuthConfig = {
     Login,
     Signup,
     PetPage,
-    PageTitle
+    PageTitle,
+    CreatePetPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ const firebaseAuthConfig = {
     ListPage,
     Login,
     PetPage,
-    Signup
+    Signup,
+    CreatePetPage
   ],
   providers: [
     StatusBar,

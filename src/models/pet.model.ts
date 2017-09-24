@@ -5,10 +5,11 @@ import { DateTime } from "ionic-angular";
 
 export class Pet {
     constructor(
-        public nome: string
+        public nome: string,
         //public peso: number,
-        //public dataNascimento: DateTime,
-        //public raca: Raca,
+        public dataNascimento: DateTime,
+        public raca: Raca,
+        public especie: string,
         //public vacinas: Array<Vacina>,
         //public medicamentos: Array<Medicamento>
     ){}

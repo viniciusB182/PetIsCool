@@ -7,15 +7,15 @@ import { FormGroup } from '@angular/forms';
 import { PageTitle } from './../../pipes/page-title';
 import { NavController, NavParams, Loading } from 'ionic-angular';
 import { Component } from '@angular/core';
+import { CreatePetPage } from './../pet/create-pet/create-pet';
+
 
 @Component({
   selector: 'page-pet',
   templateUrl: 'pet.html',
 })
-export class PetPage {
-
+export class PetPage { 
   public title: string;
-  petForm: FormGroup;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -23,30 +23,13 @@ export class PetPage {
     public formBuilder: FormBuilder,
     public utilsService: UtilsService,
     public petService: PetService,
-    public userService: UserService) {
+    public userService: UserService) { }
 
-    this.petForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2)]]
-    });
-  }
+    ionViewDidLoad(): void {
+      this.title = this.pageTitlePipe.transform(PetPage.name);
+    }
 
-  ionViewDidLoad(): void {
-    this.title = this.pageTitlePipe.transform(PetPage.name);
-  }
-
-  onSubmit(): void {
-    let loading: Loading = this.utilsService.showLoading();
-    let formPet = this.petForm.value;
-    let uuid = this.userService.currentUserUid;
-
-    this.petService.create(formPet, uuid)
-      .then(() => {
-        loading.dismiss();
-        this.utilsService.showAlert("Pet cadastrado com sucesso!");
-      })
-      .catch((error: any) => {
-        loading.dismiss();
-        this.utilsService.showAlert(error);
-      });
+  navegarCriarAnimal() {
+    this.navCtrl.push(CreatePetPage);
   }
 }

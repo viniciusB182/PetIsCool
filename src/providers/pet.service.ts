@@ -1,4 +1,4 @@
-import { AngularFire } from 'angularfire2';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { User } from './../models/user.model';
 import { Pet } from './../models/pet.model';
 import { Injectable } from '@angular/core';
@@ -8,7 +8,9 @@ import { BaseService } from "./base.service";
 
 @Injectable()
 export class PetService extends BaseService {
-
+  lista: FirebaseListObservable<any>;
+  public pet: Pet;
+  
   constructor(public http: Http,
     public af: AngularFire) {
     super();
@@ -20,4 +22,11 @@ export class PetService extends BaseService {
       .catch(this.handlePromiseError);
   }
 
+  list(uuid: string) {
+    return firebase.database().ref('/pets/' + uuid)
+      .once('value')
+      .then(function(snapshot) {
+      var nome = snapshot.val().nome;
+    });
+  }
 }

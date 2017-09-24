@@ -1,17 +1,16 @@
 <ion-header>
-  <custom-logged-header [title]="title"></custom-logged-header>
+    <custom-logged-header [title]="title"></custom-logged-header>
 </ion-header>
 
-
-<ion-content padding>
-  <form [formGroup]="petForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
-    <ion-item>
-      <ion-icon name="person" item-left color="primary"></ion-icon>
-      <ion-input type="text" placeholder="Nome" formControlName="name"></ion-input>
-    </ion-item>
-
-    <br>
-    <button ion-button full type="submit" [disabled]="petForm.invalid">Salvar Pet</button>
-
-  </form>
-</ion-content>
+<ion-content padding-right>
+    <ion-list>
+      <ion-item *ngFor="let pet of lista | async">
+        <h2>{{pet.nome}}</h2>
+        <p>{{pet.dataNascimento}}</p>
+      </ion-item>
+    </ion-list>
+  
+    <ion-fab right bottom>
+      <button ion-fab (click)="navegarCriarAnimal()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+  </ion-content>
