@@ -13,6 +13,7 @@ import { Login } from './../pages/login/login';
 import { Signup } from './../pages/signup/signup';
 import { PetPage } from './../pages/pet/pet';
 import { CreatePetPage } from './../pages/pet/create-pet/create-pet';
+import { WalkPage } from './../pages/walk/walk';
 
 import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header.component';
 
@@ -45,7 +46,8 @@ const firebaseAuthConfig = {
     Signup,
     PetPage,
     PageTitle,
-    CreatePetPage
+    CreatePetPage,
+    WalkPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ const firebaseAuthConfig = {
     Login,
     PetPage,
     Signup,
-    CreatePetPage
+    CreatePetPage,
+    WalkPage
   ],
   providers: [
     StatusBar,

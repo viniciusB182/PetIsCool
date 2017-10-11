@@ -1,3 +1,39 @@
 .auth-icon {
     font-size: 7.0em
 }
+
+.main-content {
+    background-color: orange;
+}
+
+.item-icon {
+    color:#424242;
+}
+    
+.button-bg{
+    background-color: #424242;
+}
+
+.button-no-bg{
+    color: #424242;
+}
+
+ion-header {
+    font-family: 'Handwriting';
+    .toolbar-background {
+    background-color: orange;
+    }
+}
+
+ion-navbar {
+    font-family: 'Handwriting';
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: 'Handwriting';
+    src: url('../assets/font/Handwriting.ttf');
+    font-weight: normal;
+    font-style: normal;
+}

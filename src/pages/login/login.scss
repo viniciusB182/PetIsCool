@@ -1,3 +1,28 @@
 page-login {
+    .main-title .toolbar-title-md {
+        font-family: 'Handwriting';
+        font-size: 7.5rem;
+    }
 
+    div .main-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .title-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .form-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
 }
