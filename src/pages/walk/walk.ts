@@ -7,12 +7,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'walk.html',
 })
 export class WalkPage {
+  public title: string;
+  public lat: number = 51.678418;
+  public lng: number = 7.809007;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WalkPage');
+    this.title = "Passeios";
   }
 
 }

@@ -32,7 +32,6 @@ export class UserService extends BaseService {
     });
   }
 
-
   create(user: User, uuid: string): firebase.Promise<void> {
     //return this.users.push(user);
     return this.af.database.object(`/users/${uuid}`)

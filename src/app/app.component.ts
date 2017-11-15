@@ -1,3 +1,4 @@
+import { WalkPage } from './../pages/walk/walk';
 import { PetPage } from './../pages/pet/pet';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -17,16 +18,17 @@ export class MyApp {
   //rootPage: any = HomePage;
   rootPage: any = Login;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Pets', component: PetPage }
+      { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'List', component: ListPage, icon: 'paw' },
+      { title: 'Pets', component: PetPage, icon: 'paw' },
+      { title: 'Passeios', component: WalkPage, icon: 'paw' }
     ];
 
   }

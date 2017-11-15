@@ -4,13 +4,17 @@ import { Raca } from './raca.model';
 import { DateTime } from "ionic-angular";
 
 export class Pet {
+
+    public $key: string;
+    public image: string;
+
     constructor(
         public nome: string,
-        //public peso: number,
         public dataNascimento: DateTime,
-        public raca: Raca,
+        public raca: string,
         public especie: string,
-        //public vacinas: Array<Vacina>,
-        //public medicamentos: Array<Medicamento>
+        public peso: string,
+        public porte: number,
+        public genero: number,
     ){}
 }

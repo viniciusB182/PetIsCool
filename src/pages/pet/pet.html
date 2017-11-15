@@ -1,16 +1,20 @@
 <ion-header>
-    <custom-logged-header [title]="title"></custom-logged-header>
+  <custom-logged-header [title]="title"></custom-logged-header>
 </ion-header>
 
-<ion-content padding-right>
-    <ion-list>
-      <ion-item *ngFor="let pet of lista | async">
-        <h2>{{pet.nome}}</h2>
-        <p>{{pet.dataNascimento}}</p>
-      </ion-item>
-    </ion-list>
-  
-    <ion-fab right bottom>
-      <button class="button-bg" ion-fab (click)="navegarCriarAnimal()"><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
-  </ion-content>
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-card *ngFor="let pet of pets | async" (click)="navEditPet(pet)">
+        <polaroid-pet [nome]="pet.nome" [raca]="pet.raca" [dataNascimento]="pet.dataNascimento" [peso]="pet.peso" [petUuid]="pet.$key" [petImage]="pet.image">
+        </polaroid-pet>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button class="button-bg" ion-fab (click)="navEditPet()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

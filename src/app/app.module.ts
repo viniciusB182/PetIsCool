@@ -1,10 +1,13 @@
+import { ImageService } from './../providers/image.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from "@angular/http";
 import { AngularFireModule, FirebaseAppConfig, AuthProviders, AuthMethods } from 'angularfire2';
+import { AgmCoreModule } from '@agm/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -12,10 +15,11 @@ import { ListPage } from '../pages/list/list';
 import { Login } from './../pages/login/login';
 import { Signup } from './../pages/signup/signup';
 import { PetPage } from './../pages/pet/pet';
-import { CreatePetPage } from './../pages/pet/create-pet/create-pet';
 import { WalkPage } from './../pages/walk/walk';
+import { EditPetPage } from './../pages/pet/edit-pet/edit-pet';
 
 import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header.component';
+import { PolaroidPetComponent } from './../components/polaroid-pet/polaroid-pet.component';
 
 import { AuthService } from './../providers/auth.service';
 import { UserService } from './../providers/user.service';
@@ -39,6 +43,7 @@ const firebaseAuthConfig = {
 @NgModule({
   declarations: [
     CustomLoggedHeaderComponent,
+    PolaroidPetComponent,
     MyApp,
     HomePage,
     ListPage,
@@ -46,13 +51,16 @@ const firebaseAuthConfig = {
     Signup,
     PetPage,
     PageTitle,
-    CreatePetPage,
-    WalkPage
+    WalkPage,
+    EditPetPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseAppConfig, firebaseAuthConfig),
+    AgmCoreModule.forRoot({
+     apiKey: 'AIzaSyBcz6zhzT3GHS_nY_roD3fFPX8wFCXLYh4'
+    }),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -63,8 +71,8 @@ const firebaseAuthConfig = {
     Login,
     PetPage,
     Signup,
-    CreatePetPage,
-    WalkPage
+    WalkPage,
+    EditPetPage
   ],
   providers: [
     StatusBar,
@@ -73,7 +81,9 @@ const firebaseAuthConfig = {
     AuthService,
     UtilsService,
     PetService,
+    ImageService,
     PageTitle,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

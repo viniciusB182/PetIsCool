@@ -4,7 +4,7 @@
 }
 
 .main-content {
-    background-color: orange;
+    background-color: lighten(orange, 10%);
 }
 
 .item-icon {
@@ -19,18 +19,40 @@
     color: #424242;
 }
 
+.scroll-bar-indicator
+{
+	display: none;
+}
+
 ion-header {
-    font-family: 'Handwriting';
+    font-family: 'JosefinSansRegular';
     .toolbar-background {
-    background-color: orange;
+    background-color: lighten(orange, 10%);
     }
 }
 
 ion-navbar {
-    font-family: 'Handwriting';
+    font-family: 'JosefinSansRegular';
     font-weight: bold;
 }
 
+ion-content {
+    -webkit-overflow-scrolling: false
+}
+
+polaroid-pet .card-title-row {
+    font-family: 'Handwriting';
+    font-weight: bold;
+    font-size: 35px;
+}
+
+//p {
+//    font-family: 'JosefinSansRegular';
+//}
+
+ion-label {
+   font-family: 'JosefinSansRegular'
+}
 
 @font-face {
     font-family: 'Handwriting';
@@ -38,3 +60,16 @@ ion-navbar {
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'JosefinSansRegular';
+    src: url('../assets/font/Josefin-Sans/JosefinSansRegular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+agm-map {
+    height: 300px;
+}
+
+

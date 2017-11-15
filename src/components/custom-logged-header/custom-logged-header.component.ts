@@ -1,3 +1,7 @@
+import { ImageService } from './../../providers/image.service';
+import { UserService } from './../../providers/user.service';
+import { UtilsService } from './../../providers/utils.service';
+import { PetService } from './../../providers/pet.service';
 import { PageTitle } from './../../pipes/page-title';
 import { AuthService } from './../../providers/auth.service';
 import { AlertController, App, MenuController } from 'ionic-angular';
@@ -14,12 +18,14 @@ export class CustomLoggedHeaderComponent extends BaseComponent{
 
   constructor(
     public alertCtrl: AlertController,
+    public petService: PetService,
     public authService: AuthService,
+    public utilsService: UtilsService,
+    public userService: UserService,
+    public imageService: ImageService,
     public app: App,
-    public menuCtrl: MenuController,
-    public pageTitlePipe: PageTitle) {
-
-    super(alertCtrl, authService, app, menuCtrl);    
+    public menuCtrl: MenuController) { 
+    super(alertCtrl, petService, authService, utilsService, userService, imageService, app, menuCtrl);  
   }
 
 }

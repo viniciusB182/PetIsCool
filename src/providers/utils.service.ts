@@ -26,4 +26,9 @@ export class UtilsService {
             buttons: ['Ok']
         }).present();
     }
+
+    //showAlertChoose(message: string, action: any) {
+
+
+    //}
 }

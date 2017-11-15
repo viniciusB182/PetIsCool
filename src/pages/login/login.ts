@@ -24,18 +24,18 @@ export class Login {
     let emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/i;
 
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.pattern(emailRegex)])],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      email: ['vinicius@email.com', Validators.compose([Validators.required, Validators.pattern(emailRegex)])],
+      password: ['vinicius123', [Validators.required, Validators.minLength(6)]]
     });
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Login');
+    this.onSignUp();
   }
 
   onSignUp(): void {
-    this.navCtrl.push(Signup);
+    this.onSubmit();
   }
 
   onSubmit(): void {
