@@ -1,6 +1,3 @@
-import { Medicamento } from './medicamento.model';
-import { Vacina } from './vacina.model';
-import { Raca } from './raca.model';
 import { DateTime } from "ionic-angular";
 
 export class Pet {
@@ -10,7 +7,7 @@ export class Pet {
 
     constructor(
         public nome: string,
-        public dataNascimento: DateTime,
+        public dataNascimento: Date,
         public raca: string,
         public especie: string,
         public peso: string,

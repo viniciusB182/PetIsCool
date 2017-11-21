@@ -1,3 +1,4 @@
+import { SchedulingService } from './../providers/scheduling.service';
 import { ImageService } from './../providers/image.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -17,6 +18,8 @@ import { Signup } from './../pages/signup/signup';
 import { PetPage } from './../pages/pet/pet';
 import { WalkPage } from './../pages/walk/walk';
 import { EditPetPage } from './../pages/pet/edit-pet/edit-pet';
+import { SchedulingPage } from './../pages/scheduling/scheduling';
+import { EditSchedulingPage } from './../pages/scheduling/edit-scheduling/edit-scheduling';
 
 import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header.component';
 import { PolaroidPetComponent } from './../components/polaroid-pet/polaroid-pet.component';
@@ -42,8 +45,6 @@ const firebaseAuthConfig = {
 
 @NgModule({
   declarations: [
-    CustomLoggedHeaderComponent,
-    PolaroidPetComponent,
     MyApp,
     HomePage,
     ListPage,
@@ -52,7 +53,11 @@ const firebaseAuthConfig = {
     PetPage,
     PageTitle,
     WalkPage,
-    EditPetPage
+    EditPetPage,
+    SchedulingPage,
+    EditSchedulingPage,
+    CustomLoggedHeaderComponent,
+    PolaroidPetComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,9 @@ const firebaseAuthConfig = {
     PetPage,
     Signup,
     WalkPage,
-    EditPetPage
+    EditPetPage,
+    SchedulingPage,
+    EditSchedulingPage
   ],
   providers: [
     StatusBar,
@@ -82,6 +89,7 @@ const firebaseAuthConfig = {
     UtilsService,
     PetService,
     ImageService,
+    SchedulingService,
     PageTitle,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -77,8 +77,4 @@ export abstract class BaseComponent implements OnInit {
             ]
         }).present();
     }
-
-    takePicture(petUuid: string) {
-        this.imageService.takePicture(petUuid);
-    }
 }

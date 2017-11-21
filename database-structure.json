@@ -13,7 +13,6 @@
             "photo": "url"
         }
     },
-
     "pets": {
         "vinicius-lima-uid": {
             "hanzo-uid": {
@@ -21,7 +20,7 @@
                 "peso": 9,
                 "data-nascimento": 1483534543918
             },
-            "nami-udi": {
+            "nami-uid": {
                 "nome": "Nami",
                 "peso": 3,
                 "data-nascimento": 1483464231800
@@ -35,57 +34,16 @@
             }
         }
     },
-
-    "vacinas": {
-        "hanzo-uid":{
-            "vascina-raiva-uid":{
-                "nome": "Raiva",
-                "tipo": ""
-            }
-        },
-        "chiquinha-uid":{
-            "vascina-raiva-uid":{
-                "nome": "Raiva",
-                "tipo": ""
-            }
-        }
-    },
-
-    "racas": {
-        "hanzo-uid":{
-            "husky-siberiano-uid":{
-                "nome": "Husky Siberiano",
-                "porte": "Grande"
-            }
-        },
-        "chiquinha-uid":{
-            "poodle-uid":{
-                "nome": "Poodle",
-                "porte": "Pequeno"
-            }
-        }
-    },
-
-    "medicamentos": {
-        "chiquinha-uid":{
-            "medicamento-01-uid":{
-                "nome": "Remédio para ouvido",
-                "tipo": "Gotas",
-                "intervalo-dose": 1483989491800,
-                "dose": "3 gotas",
-                "inicio-dosagem": 1483989491800,
-                "termino-dosagem": 1483989491800
-            }
-        }
-    },
-
-    "consultas": {
-        "hanzo-uid":{
-            "consulta-01-uid":{
-                "descricao": "Verificar manchas na barriga",
-                "datahora-atendimento": 1483989491800
+    "agendamentos": {
+        "vinicius-uid": {
+            "hanzo-uid": {
+                "titulo": "Consulta",
+                "descricao": ""
+            },
+            "nami-uid": {
+                "titulo": "Cirurgia",
+                "descricao": ""
             }
         }
     }
-
 }

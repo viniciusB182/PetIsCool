@@ -6,7 +6,7 @@
   <ion-list>
     <ion-item>
       <ion-card *ngFor="let pet of pets | async" (click)="navEditPet(pet)">
-        <polaroid-pet [nome]="pet.nome" [raca]="pet.raca" [dataNascimento]="pet.dataNascimento" [peso]="pet.peso" [petUuid]="pet.$key" [petImage]="pet.image">
+        <polaroid-pet [pet]="pet">
         </polaroid-pet>
       </ion-card>
     </ion-item>

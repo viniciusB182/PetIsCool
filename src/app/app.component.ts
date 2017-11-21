@@ -1,10 +1,11 @@
-import { WalkPage } from './../pages/walk/walk';
-import { PetPage } from './../pages/pet/pet';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { SchedulingPage } from './../pages/scheduling/scheduling';
+import { WalkPage } from './../pages/walk/walk';
+import { PetPage } from './../pages/pet/pet';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Login } from './../pages/login/login';
@@ -26,9 +27,10 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'List', component: ListPage, icon: 'paw' },
+      //{ title: 'List', component: ListPage, icon: 'paw' },
       { title: 'Pets', component: PetPage, icon: 'paw' },
-      { title: 'Passeios', component: WalkPage, icon: 'paw' }
+      { title: 'Agendamento', component: SchedulingPage, icon: 'clock' },
+      { title: 'Passeios', component: WalkPage, icon: 'md-partly-sunny' }
     ];
 
   }

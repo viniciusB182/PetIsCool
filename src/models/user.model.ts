@@ -1,5 +1,3 @@
-import { Pet } from './pet.model';
-
 export class User {
     constructor(
         public name: string,

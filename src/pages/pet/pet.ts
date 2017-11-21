@@ -1,15 +1,20 @@
-import { EditPetPage } from './edit-pet/edit-pet';
-import { ImageService } from './../../providers/image.service';
-import { Observable } from 'rxjs/Observable';
 import { Pet } from './../../models/pet.model';
 import { User } from './../../models/user.model';
+
 import { PetService } from './../../providers/pet.service';
 import { UtilsService } from './../../providers/utils.service';
+import { ImageService } from './../../providers/image.service';
+
+import { PageTitle } from './../../pipes/page-title';
+
+import { Observable } from 'rxjs/Observable';
+import { EditPetPage } from './edit-pet/edit-pet';
+
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
-import { PageTitle } from './../../pipes/page-title';
-import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 import { Component } from '@angular/core';
+
+import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 
 
 @Component({
